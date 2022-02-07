@@ -59,4 +59,7 @@ fun main() {
 
     val bd2: BigDecimal
     bd2 = bd.add(BigDecimal(30))
+
+    // 함수 return 타입에 선언하면 자바의 void와 같다, 생략 가능
+    var myUnit: Unit
 }
