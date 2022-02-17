@@ -20,25 +20,23 @@ data class KotlinPerson(
             val today = GregorianCalendar()
             val years = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR)
 
-            return if (dateOfBirth.get(Calendar.DAY_OF_YEAR) >= today.get(Calendar.YEAR)){
-                years - 1
-            } else {
-                years
-            }
+            return if (dateOfBirth.get(Calendar.DAY_OF_YEAR) >= today.get(Calendar.YEAR)) years - 1 else years
         }
     }
 
 }
 
 fun main(args: Array<String>) {
-    val john = JavaPerson(1L, "Mr", "John", "Blue", GregorianCalendar(1977, 9, 3))
-    val jane = JavaPerson(2L, "Mrs", "Jane", "Green", null)
-    println(john == JavaPerson(1L, "Mr", "John", "Blue", GregorianCalendar(1977, 9, 3)))
+    val john = KotlinPerson(1L, "Mr", "John", "Blue", GregorianCalendar(1977, 9, 3))
+    val jane = KotlinPerson(2L, "Mrs", "Jane", "Green", null)
+    println(john == KotlinPerson(1L, "Mr", "John", "Blue", GregorianCalendar(1977, 9, 3)))
     println(john == jane)
     println(john == null)
     println(jane.hashCode())
-    println(john.toString() + "'s age is " + john!!.age)
+    println(john.toString() + "'s age is " + john.age)
     println(jane.toString() + "'s age is " + jane.age)
-    println(JavaPerson.getAge(GregorianCalendar(1988, 5, 3)))
+    println(KotlinPerson.getAge(GregorianCalendar(1988, 5, 3)))
+    val olderPerson = if (john.age > jane.age) john else jane
+    println("$olderPerson")
 }
 
